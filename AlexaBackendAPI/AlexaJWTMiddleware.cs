@@ -45,7 +45,7 @@ namespace AlexaBackendAPI
                     await stream.CopyToAsync(buffer);
                     byte[] bodyBuffer = new byte[buffer.Length];
                     buffer.Position = 0L;
-                    buffer.Read(bodyBuffer, 0, bodyBuffer.Length);
+                    await buffer.ReadAsync(bodyBuffer, 0, bodyBuffer.Length);
                     string body = Encoding.UTF8.GetString(bodyBuffer);
 
                     if (!string.IsNullOrEmpty(body))
